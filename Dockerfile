@@ -46,7 +46,7 @@ RUN echo '#!/bin/bash\n\
     chmod +x /start.sh
 
 # Expose necessary ports
-EXPOSE 19132 25577 8082
+EXPOSE 19132/udp 25577 8082
 
 # Start nginx and Minecraft server
 CMD sh /start.sh
