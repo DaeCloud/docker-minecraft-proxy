@@ -12,51 +12,32 @@ This Docker container allows you to run a Minecraft Paper server with customizab
 
 ## Environment Variables
 
-- `PAPER_VERSION` (default: `1.20.6`): Specifies the Minecraft version of Paper to download.
-- `PAPER_BUILD` (default: `147`): Specifies the build number of the Paper server to download.
+- `SERVER_TYPE` (default: `bungeecord`): Specifies the type of proxy to use.
 - `MEMORY_SIZE` (default: `4G`): Specifies the maximum and minimum amount of RAM the server can use.
-- `EULA` (default: `false`): Automatically accepts the Minecraft EULA if set to true.
 
 ## Running the Container
 
-To run the Minecraft Paper server Docker container with persistent data, use the following command:
+To run the Minecraft Proxy server Docker container with persistent data, use the following command:
 
 ```sh
 docker run -d -p 25577:25577 -p 19132:19132 \
     -v /path/on/host:/proxy \
     -e MEMORY_SIZE=512M \
-    daelinc/minecraft-papermc
+    -e SERVER_TYPE=bungeecord \
+    daelinc/minecraft-proxy:latest
 ```
 
 ## Customization
 
 You can customize the server by providing different values for the environment variables when running the container. Here are the details:
 
-### PAPER_VERSION
+### SERVER_TYPE
 
-Specifies the Minecraft version of Paper to download. For example, 1.20.7.
-
-### PAPER_BUILD
-
-Specifies the build number of the Paper server to download. For example, 148.
+Specify which type of server proxy you want to use:
+- bungeecord
+- velocity
+- waterfall
 
 ### MEMORY_SIZE
 
-Specifies the maximum and minimum amount of RAM the server can use. For example, 8G.
-
-### EULA
-
-Automatically accepts the Minecraft EULA if set to true. The server will not start unless the EULA is accepted. By default, it is set to false.
-
-## Web Console
-
-This image automatically installs the WebConsole plugin which allows you to access the console for your server.
-
-### Accessing the console
-
-- Visit [http://localhost:80](http://localhost:80) on your computer(*or replace with the ip address of the server*) and click `Add new server`.
-- Give the server any name you want
-- Set the `IP or Domain` to the ip of the server (*or localhost*)
-- Set the `Port` to the port used by the plugin (`8080` by default)
-- Set the `Password` to the password required by the plugin (`mySecurePassword` by default)
-- Click on `Add server`.
+Specifies the maximum and minimum amount of RAM the server can use. For example, 128M.
