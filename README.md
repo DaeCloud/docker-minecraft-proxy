@@ -21,6 +21,7 @@ To run the Minecraft Proxy server Docker container with persistent data, use the
 
 ```sh
 docker run -d -p 25577:25577 -p 19132:19132 \
+    --name=proxy \
     -v /path/on/host:/proxy \
     -e MEMORY_SIZE=512M \
     -e SERVER_TYPE=bungeecord \
